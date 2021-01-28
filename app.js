@@ -63,6 +63,7 @@ function populateShows(shows) {
       `);
 
     $showsList.append($item);
+   
   }
 }
 
@@ -76,13 +77,17 @@ $("#search-form").on("submit", async function handleSearch (evt) {
   evt.preventDefault();
 
   let query = $("#search-query").val();
+  
   if (!query) return;
 
   $("#episodes-area").hide();
 
   let shows = await searchShows(query);
-
+ 
   populateShows(shows);
+  
+  $("#search-query").val("");
+  
 });
 
 
